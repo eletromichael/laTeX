@@ -1,0 +1,96 @@
+%Michael Rodrigues, UFRGS, eletromichael@gmail.com, Microeletrônica
+
+\documentclass[12pt,a4paper]{article} %tipologia e tamanhos
+
+\usepackage[portuguese]{babel} %formatação de hifenização
+
+\usepackage{ragged2e} %alinhamento de texto
+
+\usepackage{multirow} %células que ocupam múltiplas linhas
+
+\usepackage{graphicx} %habilitação de figuras
+
+\usepackage{float} %posição de figuras e tabelas
+
+\usepackage{caption} %ajusta alinhamento das legendas 
+
+\usepackage[left=1cm,right=1cm,top=1.6cm,bottom=1.6cm]{geometry} %margens e o layout da página
+
+\usepackage{array} %controle avançado de colunas 
+
+\usepackage[table,xcdraw]{xcolor} %suporte de cores em tabelas
+
+\usepackage{pifont} %símbolos gráficos especiais 
+
+\usepackage{subcaption} %cria legendas de subfiguras e subtabelas dentro de uma figura ou tabela principal
+
+\usepackage{tikz} %criar gráficos vetoriais de alta qualidade diretamente em documentos LaTeX
+
+\usepackage{circuitikz} % desenvolvida especificamente para desenhar circuitos elétricos e eletrônicos
+
+\renewcommand{\arraystretch}{1.6}% entre linhas das células 
+
+\begin{document}
+
+\section*{Lado a lado: figura no lado esquerdo e texto no lado direito}
+
+\begin{justify}
+\hspace{0.5cm}
+A Figura \textcolor{blue}{\ref{figura1}} mostra no lado esquerdo uma imagem criada pelo ambiente \verb|tikzpicture| e \verb|circuitikz| e no lado direito os cálculos do circuito.
+\end{justify}
+
+\begin{figure}[!htp]
+\centering
+\begin{subfigure}{0.5\textwidth}
+\centering
+\begin{tikzpicture}[american]
+\draw (-8,3) to [R, l=470 $\Omega$] (-5,3);
+\draw (-5,3) to [R, l=330 $\Omega$] (-5,0);
+\draw (-5,0) to [R, l=200 $\Omega$] (-8,0);
+\draw (-8,0) to [vsource, l=$5$ V, invert] (-8,3);
+\end{tikzpicture}
+\vspace{2cm} %espaçamento abaixo do desenho do circuito
+\end{subfigure}%
+\begin{subfigure}{0.5\textwidth}
+\centering
+\begin{itemize}
+    \item Resistores em série.
+    \item $R_{T}=470+330+200=1000\hspace{0.12cm} \Omega=1$ k$\Omega$
+    \item A corrente elétrica é a mesma para todos os elementos.
+    \item $I_{R_1}=I_{R_2}=I_{R_3}=\frac{5}{1000}=0,005$ A$=5$ mA
+    \item A tensão elétrica é distribuída proporcionalmente entre seus elementos.
+    \item $V_{R_1}=0,005 \cdot 470=2,35$ V
+    \item $V_{R_2}=0,005 \cdot 330=1,65$ V
+    \item $V_{R_1}=0,005 \cdot 200=1$ V
+\end{itemize}
+\end{subfigure}
+\caption{Principal configuração de um circuito elétrico conectado em série.}
+\label{figura1}
+\end{figure}
+
+\section*{Lado a lado: figura no lado direito e texto no lado esquerdo}
+
+\begin{justify}
+\hspace{0.5cm}
+A Figura \textcolor{blue}{\ref{figura2}} mostra no lado esquerdo uma imagem externa e no lado esquerda uma descrição.
+\end{justify}
+
+\begin{figure}[!htp]
+\centering
+\begin{subfigure}{0.3\textwidth}
+\begin{itemize}
+    \item \textit{Toolkit for Interactive Network Analysis} (TINA) é um \textit{software} de treinamento e \textit{design} eletrônico baseado em SPICE da \textit{DesignSoft} de Budapeste, Hungria.
+\end{itemize}
+\vspace{1cm} %espaçamento abaixo do desenho do circuito
+\end{subfigure}%
+\begin{subfigure}{0.6\textwidth}
+\centering
+\includegraphics[scale=0.8]{figura_externa.png}
+\end{subfigure}
+\caption{Simulação realizado no \textit{software} TINA-TI.}
+\label{figura2}
+\end{figure}
+
+
+
+\end{document}
